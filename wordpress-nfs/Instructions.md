@@ -43,18 +43,11 @@ You can verify that the connection is running by executing the following command
 
 ``` kubectl get nodes -o wide ```
 
-Take note of the private ip range for the worker nodes since we will need this information later when deploying the NFS server. 
+![Step1-004](https://github.com/areyesjr/do-kubernetes/blob/master/wordpress-nfs/img/Step1-004.png?raw=true)
+
+Take note of the internal ip for the worker nodes since we will need this information later when deploying the NFS server. 
 
 This completes Step 1 you have successfully created a kubernetes cluster and have connected to the cluster using kubectl. 
-
-
-<!--
-If showing a command, explain the command first by talking about what it does. Then show the command.
-
-If showing a configuration file, try to show only the relevant parts and explain what needs to change.
--->
-
-Now transition to the next step by telling the reader what's next.
 
 ## Step 2 — Creating NFS Cluster. 
 

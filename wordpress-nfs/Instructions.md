@@ -47,11 +47,36 @@ You can verify that the connection is running by executing the following command
 
 Take note of the internal ip for the worker nodes since we will need this information later when deploying the NFS server. 
 
-This completes Step 1 you have successfully created a kubernetes cluster and have connected to the cluster using kubectl. 
+This completes step 1 you have successfully created a kubernetes cluster and have connected to the cluster using kubectl. 
 
 ## Step 2 — Creating NFS Cluster. 
 
-Another introduction
+In this step we are going to deploy the NFS Server using the DigitalOcean Cloud portal.
+You will use the following cloud config file to automaticly install and enable the NFS services. 
+
+<$>[note]
+**Note:** Pay close attention to the section under contents. I have added the internal ip address of one of the worker nodes followed by a subnet mask of 16.
+This will allow only the cluster nodes to access the NFS share. You will also want to check if you have other volumes in that region. In my case I do not have another volume so the default volume mount will be volume_nyc1_01. If you have other volumes in that region the mount number will increase. Example volume_nyc1_02.
+<$>
+
+```
+#cloud-config
+
+package_upgrade: true
+
+packages:
+  - nfs-utils
+  - nfs-utils-lib
+
+runcmd:
+- [ systemctl, enable, nfs-server.service ]
+- [ systemctl, start, nfs-server.service ]
+
+write_files:
+  - path: /etc/exports
+    content: |
+      /mnt/volume_nyc1_01 10.136.184.144/16(rw,no_root_squash,no_subtree_check)
+```
 
 Your content
 

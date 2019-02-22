@@ -1,5 +1,5 @@
 # WordPress + MySQL + NFS on DigitalOcean
 
-## Cloud Cloud
+## Cloud Config
 
 ## WordPress Yaml

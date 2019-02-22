@@ -5,9 +5,7 @@
 ```cloud-config.yaml```
 
 The Cloud Config file should be added under user data when deploying a new droplet. 
-This will configure NFS server for you. 
-
-Please make sure you add the correct ip subnet. You will want to use the worker node private network. 
+This will configure NFS server for you. Please make sure you add the correct ip subnet. You will want to use the worker node private network. 
 
 ```/mnt/volume_nyc1_01 <privateip/16>(rw,no_root_squash,no_subtree_check)```
 

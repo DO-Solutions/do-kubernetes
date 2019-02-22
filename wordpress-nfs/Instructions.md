@@ -21,17 +21,31 @@ First, lets login to the DigitalOcean portal and on the left hand panel you shou
 
 ![Step1-000](https://raw.githubusercontent.com/areyesjr/do-kubernetes/master/wordpress-nfs/img/Step1-000.png)
 
-Next, let's create the cluster. Click on "create a kubernetes cluster". For this demo you will want to select  Kubernetes version 1.13.2. Select NYC1 and leave the rest of the settings as default. 
+Next, let's create the cluster. Click on "create a kubernetes cluster". For this demo you will want to select Kubernetes version 1.13.2. Select NYC1 and leave the rest of the settings as default. 
 
 ![Step1-001](https://github.com/areyesjr/do-kubernetes/blob/master/wordpress-nfs/img/Step1-001.png?raw=true)
 
-Once all of the options have been selected you will want to click on create cluster. 
+Once all of the options have been selected you will want to click on "create cluster". This is a quick process on DigitalOcean and usually takes around 4 minutes to create a 3 node cluster. 
 
 ![Step1-002](https://github.com/areyesjr/do-kubernetes/blob/master/wordpress-nfs/img/Step1-002.png?raw=true)
 
-The kubernetes cluster 
+Now that the cluster has been completed we will want to download the config file. Click on "Download Config File"
 
 ![Step1-003](https://github.com/areyesjr/do-kubernetes/blob/master/wordpress-nfs/img/Step1-003.png?raw=true)
+
+Now that you have the config file you will want to pass it to kubectl. You can achieve this by moving the downloaded configuration file under ~.kube/config.
+
+* You can run the following command in terminal. If the path does not yet exist you must create it. 
+
+``` mv ~/Downloads/<Downloaded config file> ~/.kube/config ```
+
+* You can verify that the connection is running by executing the following command. 
+
+``` kubectl get nodes -o wide ```
+
+Take note of the private ip range for the worker nodes since we will need this information later when deploying the NFS server. 
+
+This completes Step 1 you have successfully created a kubernetes cluster and have connected to the cluster using kubectl. 
 
 
 <!--

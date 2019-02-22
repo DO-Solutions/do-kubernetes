@@ -9,7 +9,7 @@ This will configure NFS server for you. Make sure you add the correct ip subnet.
 
 ```/mnt/volume_nyc1_01 <privateip/16>(rw,no_root_squash,no_subtree_check)```
 
-## WordPress Yaml
+## WordPress
 
 ```wordpress-nfs.yaml```
 

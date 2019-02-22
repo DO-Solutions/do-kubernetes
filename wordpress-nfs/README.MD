@@ -16,7 +16,7 @@ Please make sure you add the correct ip subnet. You will want to use the worker 
 ```wordpress-nfs.yaml```
 
 The WordPress yaml file can be deployed using the following command once the cluster have been built on DigitalOcean. 
-Keep in mind that you will need Kubectl install. You can find installation instructions [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/). Getting started with kubernetes on DigitalOcean can be found [here](https://www.digitalocean.com/docs/kubernetes/quickstart/)
+Keep in mind that you will need Kubectl install. You can find installation instructions [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/). Getting started with kubernetes on DigitalOcean can be found [here](https://www.digitalocean.com/docs/kubernetes/quickstart/).
 
 ```kubectl create -f wordpress-nfs.yaml```
 

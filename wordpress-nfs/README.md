@@ -33,4 +33,4 @@ spec:
   nfs:
     # Use NFS Service Private IP 
     server: 10.136.5.230
-    path: "/mnt/volume_nyc1_01"```
+    path: "/mnt/volume_nyc1_01" ```

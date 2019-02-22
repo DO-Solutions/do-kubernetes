@@ -35,11 +35,11 @@ Now that the cluster has been completed we will want to download the config file
 
 Now that you have the config file you will want to pass it to kubectl. You can achieve this by moving the downloaded configuration file under ~.kube/config.
 
-* You can run the following command in terminal. If the path does not yet exist you must create it. 
+You can run the following command in terminal. If the path does not yet exist you must create it. 
 
 ``` mv ~/Downloads/<Downloaded config file> ~/.kube/config ```
 
-* You can verify that the connection is running by executing the following command. 
+You can verify that the connection is running by executing the following command. 
 
 ``` kubectl get nodes -o wide ```
 

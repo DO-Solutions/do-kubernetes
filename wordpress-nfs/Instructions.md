@@ -58,15 +58,6 @@ You will use the following cloud config file to automaticly install and enable t
 **Note:** Pay close attention to the section under contents. I have added the internal ip address of one of the worker nodes followed by a subnet mask of 16.This will allow only the cluster nodes to access the NFS share. You will also want to check if you have other volumes in that region. In my case I do not have another volume so the default volume mount will be volume_nyc1_01. If you have other volumes in that region the mount number will increase. Example volume_nyc1_02.
 <$>
 
-
-<$>[note]
-**Note:** This is a note.
-<$>
-
-<$>[warning]
-**Warning:** This is a warning.
-<$>
-
 ```
 #cloud-config
 
@@ -83,7 +74,7 @@ runcmd:
 write_files:
   - path: /etc/exports
     content: |
-      /mnt/volume_nyc1_01 10.136.184.144/16(rw,no_root_squash,no_subtree_check)
+      /mnt/volume_nyc1_01 `<^>your_worker_ip<^>`/16(rw,no_root_squash,no_subtree_check)
 ```
 
 Your content

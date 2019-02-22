@@ -55,8 +55,7 @@ In this step we are going to deploy the NFS Server using the DigitalOcean Cloud 
 You will use the following cloud config file to automaticly install and enable the NFS services. 
 
 <$>[note]
-**Note:** Pay close attention to the section under contents. I have added the internal ip address of one of the worker nodes followed by a subnet mask of 16.
-This will allow only the cluster nodes to access the NFS share. You will also want to check if you have other volumes in that region. In my case I do not have another volume so the default volume mount will be volume_nyc1_01. If you have other volumes in that region the mount number will increase. Example volume_nyc1_02.
+**Note:** Pay close attention to the section under contents. I have added the internal ip address of one of the worker nodes followed by a subnet mask of 16.This will allow only the cluster nodes to access the NFS share. You will also want to check if you have other volumes in that region. In my case I do not have another volume so the default volume mount will be volume_nyc1_01. If you have other volumes in that region the mount number will increase. Example volume_nyc1_02.
 <$>
 
 ```

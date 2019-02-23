@@ -10,7 +10,7 @@ spec:
     - ReadWriteMany
   nfs:
     # Use NFS Service Private IP 
-    server: 10.136.5.230
+    server: 10.136.1.121
     path: "/mnt/volume_nyc1_01"
 ---
 # NFS Persistent Volume Claim
@@ -106,7 +106,7 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
       app: wordpress

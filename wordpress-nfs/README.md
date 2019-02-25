@@ -114,7 +114,7 @@ cat /etc/exports
 
 If everything checks out and there are no errors you can continue to the next section which is to deploy wordpress. 
 
-## Step 3 — Deploying the Kubernetes WordPress Deployment. 
+## Step 3 — Deploying WordPress on Kubernetes. 
 
 Another introduction
 

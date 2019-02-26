@@ -17,23 +17,11 @@ Before you begin this guide you'll need the following:
 
 In this step we are going to deploy the Kubernetes cluster using the DigitalOcean Cloud portal. 
 
-First, lets login to the DigitalOcean portal and on the left hand panel you should see kubernetes. Click on kubernetes and it should take you to a page similar the one below. 
-
-![Step1-000](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step1-000.png?raw=true)
-
-Next, let's create the cluster. Click on "create a kubernetes cluster". For this demo you will want to select Kubernetes version 1.13.2. Select NYC1 and leave the rest of the settings as default. 
-
-![Step1-001](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step1-001.png?raw=true)
-
-Once all of the options have been selected you will want to click on "create cluster". This is a quick process on DigitalOcean and usually takes around 4 minutes to create a 3 node cluster. 
-
-![Step1-002](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step1-002.png?raw=true)
-
-Now that the cluster has been completed we will want to download the config file. Click on "Download Config File"
-
-![Step1-003](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step1-003.png?raw=true)
-
-Now that you have the config file you will want to pass it to kubectl. You can achieve this by moving the downloaded configuration file under ~.kube/config.
+*First, lets login to the DigitalOcean portal and on the left hand panel you should see kubernetes. Click on kubernetes and it should take you to a page similar the one below. 
+*Next, let's create the cluster. Click on "create a kubernetes cluster". For this demo you will want to select Kubernetes version 1.13.2. Select NYC1 and leave the rest of the settings as default. 
+*Once all of the options have been selected you will want to click on "create cluster". This is a quick process on DigitalOcean and usually takes around 4 minutes to create a 3 node cluster. 
+*Now that the cluster has been completed we will want to download the config file. Click on "Download Config File"
+*Finally now that you have the config file you will want to pass it to kubectl. You can achieve this by moving the downloaded configuration file under ~.kube/config.
 
 You can run the following command in terminal. If the path does not yet exist you must create it. 
 

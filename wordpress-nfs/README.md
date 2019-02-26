@@ -40,7 +40,7 @@ If you are not familiar with the cloud config we recomend that you read the foll
 * Create a droplet in DigitalOcean portal. 
 * NFS Droplet must be Centos7 or above. 
 * User Data and Private Networking must be selected under additional options. 
-* You will inset the following code under User Data when selected. 
+* You will insert the following code under User Data when selected. 
 
 <$>[note]
 **Note:** You must modify the config-config below and enter one of the worker private IP address we noted above. 
@@ -68,9 +68,12 @@ write_files:
 Once the NFS server has been provision give it a couple of minutes to complete the Cloud-Config scritps.
 You can ssh into NFS server and run the following commands to check if Cloud-Config executed as expected. 
 
+The following command checks the status of the NFS server. 
+
 ```
 systemctl status nfs-server
 ```
+The following command checks that the exports file was written to. 
 
 ```
 cat /etc/exports
@@ -82,15 +85,83 @@ If things did not go as planned you can review the following log file.
 /var/log/cloud-init
 ```
 
+You will also want to take note of the private IP of the NFS server since we will be using it later. 
+
+```
+ifconfig | grep inet
+```
+
 If everything checks out and there are no errors you can continue to the next section which is to deploy wordpress. 
 
 ## Step 3 — Deploying WordPress on Kubernetes. 
 
-Another introduction
+In this step we are going to deploy the WordPress application using the ```wordpress-nfs.yaml``` file.
+You can simply download the yaml file or clone the entire repository in order to run it. 
 
-Your content
+The NFS persistent volume block is the only section that requires modification. 
+You must add the private IP of the NFS server that we took note of earlier. 
 
-Transition to the next step.
+```
+# NFS Persistent Volume
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    # Use NFS Service Private IP 
+    server: <NFS-PRIVATE-IP>
+    path: "/mnt/volume_nyc1_01"
+```
+
+We are now ready to deploy WordPress on Kubernetes. 
+
+``` 
+kubectl create -f wordpress-nfs.yaml
+```
+
+Give the deployment a couple fo minutes to run and run the following command. 
+
+```
+kubectl get all
+```
+
+Once completed you will have a similar output the one below. Note that I have modified the IP address from my output. 
+
+```
+NAME                             READY   STATUS    RESTARTS   AGE
+pod/mysql-674dcfbd85-hlf62       1/1     Running   0          3d21h
+pod/wordpress-5d4cdb599b-28dfm   1/1     Running   0          3d20h
+pod/wordpress-5d4cdb599b-2j748   1/1     Running   0          3d20h
+pod/wordpress-5d4cdb599b-5vvkk   1/1     Running   0          3d20h
+pod/wordpress-5d4cdb599b-6bnxf   1/1     Running   0          3d20h
+pod/wordpress-5d4cdb599b-7wkzx   1/1     Running   0          3d21h
+pod/wordpress-5d4cdb599b-8lgdv   1/1     Running   0          3d20h
+pod/wordpress-5d4cdb599b-fhp78   1/1     Running   0          3d20h
+pod/wordpress-5d4cdb599b-rjv2q   1/1     Running   0          3d20h
+pod/wordpress-5d4cdb599b-ttz7n   1/1     Running   0          3d20h
+pod/wordpress-5d4cdb599b-v8kcv   1/1     Running   0          3d20h
+
+NAME                 TYPE           CLUSTER-IP         EXTERNAL-IP      PORT(S)        AGE
+service/kubernetes   ClusterIP      111.111.111.111    <none>           443/TCP        4d
+service/mysql        ClusterIP      111.111.111.111    <none>           3306/TCP       3d21h
+service/wordpress    LoadBalancer   111.111.111.111   111.111.111.111   80:31150/TCP   3d21h
+
+NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/mysql       1/1     1            1           3d21h
+deployment.apps/wordpress   10/10   10           10          3d21h
+
+NAME                                   DESIRED   CURRENT   READY   AGE
+replicaset.apps/mysql-674dcfbd85       1         1         1       3d21h
+replicaset.apps/wordpress-5d4cdb599b   10        10        10      3d21h
+
+```
+
+You should now be able to navigate to the external-ip of the cluster and see the wordpress deployment. 
 
 ## Conclusion
 

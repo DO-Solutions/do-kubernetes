@@ -40,7 +40,6 @@ In this step we are going to deploy the NFS Server using the DigitalOcean Cloud 
 You will use the following cloud config file to automaticly install and enable the NFS services. 
 If you are not familiar with the cloud config we recomend that you read the following [article](https://www.digitalocean.com/community/tutorials/an-introduction-to-cloud-config-scripting).
 
-* Create a droplet in DigitalOcean portal. 
 * NFS Droplet must be Centos7 or above. 
 * User Data and Private Networking must be selected under additional options. 
 * You will insert the following code under User Data when selected. 

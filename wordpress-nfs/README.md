@@ -76,7 +76,7 @@ systemctl status nfs-server
 cat /etc/exports
 ```
 
-If things did not go as planned you can check the following review the following log file. 
+If things did not go as planned you can review the following log file. 
 
 ```
 /var/log/cloud-init

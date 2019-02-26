@@ -16,7 +16,7 @@ Before you begin this guide you'll need the following:
 
 In this step we are going to deploy the Kubernetes cluster using the DigitalOcean Cloud portal. 
 
-* Creating a cluster in DigitalOcean is a quick and streamlined process. Documentation for creating a k8s cluster can be found [here]{https://www.digitalocean.com/docs/kubernetes/how-to/create-clusters/}.
+* Creating a cluster in DigitalOcean is a quick and streamlined process. Documentation for creating a k8s cluster can be found [here](https://www.digitalocean.com/docs/kubernetes/how-to/create-clusters/).
 * Once the cluster has been provisioned you will want to download the k8s config. 
 * We will now want to connect to the cluster. You can achieve this by moving the downloaded k8s configuration file under ~/.kube/config.
 
@@ -36,7 +36,7 @@ This completes step 1 you have successfully created a kubernetes cluster and hav
 
 In this step we are going to deploy the NFS Server using the DigitalOcean Cloud portal.
 You will use the following cloud config file to automaticly install and enable the NFS services. 
-If you are not familiar with the cloud config we recomend that you read the following [article]{https://www.digitalocean.com/community/tutorials/an-introduction-to-cloud-config-scripting}.
+If you are not familiar with the cloud config we recomend that you read the following [article](https://www.digitalocean.com/community/tutorials/an-introduction-to-cloud-config-scripting).
 
 <$>[note]
 **Note:** You must modify the config-config below and enter one of the worker private ip addresses we noted above. 

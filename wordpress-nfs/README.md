@@ -164,7 +164,7 @@ replicaset.apps/wordpress-5d4cdb599b   10        10        10      3d21h
 ```
 
 You should now be able to navigate to the external-ip of the cluster and see the WordPress deployment. 
-You should also be able to navigate to the NFS server and see the contents of WordPress under /mnt/volume_nyc1_01.
+You should also be able to navigate to the NFS server and see the contents of WordPress under ```/mnt/volume_nyc1_01```.
 
 ## Conclusion
 

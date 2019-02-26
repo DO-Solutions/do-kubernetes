@@ -65,28 +65,16 @@ write_files:
 
 First, lets start by navigating to the DigitalOcean cloud portal and selecting droplet on the left hand corner. Lets continue to the top hand right corner click on create then droplet. 
 
-![Step2-000](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step2-000.png?raw=true)
-
 For this demo you will want to select the latest version of Centos 7. The $5 dollar droplet with 1GB Memory and 1CPU will work.  
-
-![Step2-001](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step2-001.png?raw=true)
 
 Scrolling down the options you will want to select "add volume" and select NYC1 as the datacenter region.
 
-![Step2-002](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step2-002.png?raw=true)
-
 The default setting for the volume will work but you can reduce the size as long as its not less than 15GB.
-
-![Step2-003](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step2-003.png?raw=true)
 
 Scrolling down you will want to select private networking and user data.  
 Once you select user data you will have the option to insert code. This is where you will add in the cloud config we mentioned above. 
 
-![Step2-004](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step2-004.png?raw=true)
-
 Last, we will want to give add in our ssh keys if you have them, give the machine a hostname and create the cluster. 
-
-![Step2-005](https://github.com/DO-Solutions/do-kubernetes/blob/master/wordpress-nfs/img/Step2-005.png?raw=true)
 
 Give the machine a couple of minutes to deploy and run the cloud init scripts. Once completed you can ssh to the NFS and make sure that the services are running by executing the following comannds. 
 

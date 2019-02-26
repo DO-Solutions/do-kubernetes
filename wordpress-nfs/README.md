@@ -12,16 +12,13 @@ Before you begin this guide you'll need the following:
 
 * Kubectl installed on your workstation. You can find instructions on how to install kubectl in the following [article](https://www.digitalocean.com/docs/kubernetes/how-to/connect-with-kubectl/).
 
-
 ## Step 1 — Creating Kubernetes Cluster. 
 
 In this step we are going to deploy the Kubernetes cluster using the DigitalOcean Cloud portal. 
 
-* First, lets login to the DigitalOcean portal and on the left hand panel you should see kubernetes. Click on kubernetes and it should take you to a page similar the one below. 
-* Next, let's create the cluster. Click on "create a kubernetes cluster". For this demo you will want to select Kubernetes version 1.13.2. Select NYC1 and leave the rest of the settings as default. 
-* Once all of the options have been selected you will want to click on "create cluster". This is a quick process on DigitalOcean and usually takes around 4 minutes to create a 3 node cluster. 
-* Now that the cluster has been completed we will want to download the config file. Click on "Download Config File"
-* Finally now that you have the config file you will want to pass it to kubectl. You can achieve this by moving the downloaded configuration file under ~.kube/config.
+* Creating a cluster in DigitalOcean is a quick and streamlined process. Documentation for creating a k8s cluster can be found [here]{https://www.digitalocean.com/docs/kubernetes/how-to/create-clusters/}.
+* Once the cluster has been provisioned you will want to download the k8s config. 
+* We will now want to connect to the cluster. You can achieve this by moving the downloaded k8s configuration file under ~/.kube/config.
 
 You can run the following command in terminal. If the path does not yet exist you must create it. 
 
@@ -39,9 +36,10 @@ This completes step 1 you have successfully created a kubernetes cluster and hav
 
 In this step we are going to deploy the NFS Server using the DigitalOcean Cloud portal.
 You will use the following cloud config file to automaticly install and enable the NFS services. 
+If you are not familiar with the cloud config we recomend that you read the following [article]{https://www.digitalocean.com/community/tutorials/an-introduction-to-cloud-config-scripting}.
 
 <$>[note]
-**Note:** Pay close attention to the section under contents. You will need to add one of the worker node's IP followed by a subnet mask of 16. This will allow only the cluster nodes to access the NFS share. You will also want to check if you have other volumes in that region. In my case I do not have another volume so the default volume mount will be volume_nyc1_01. If you have other volumes in that region the mount number will increase. Example: volume_nyc1_02.
+**Note:** You must modify the config-config below and enter one of the worker private ip addresses we noted above. 
 <$>
 
 ```
@@ -63,20 +61,10 @@ write_files:
       /mnt/volume_nyc1_01 WORKER_IP_ADDRESS/16(rw,no_root_squash,no_subtree_check)
 ```
 
-First, lets start by navigating to the DigitalOcean cloud portal and selecting droplet on the left hand corner. Lets continue to the top hand right corner click on create then droplet. 
+* Create a droplet in DigitalOcean portal. 
+* Droplet must be Centos7 or above. 
+* User Data and Private Networking must be selected under additional options. 
 
-For this demo you will want to select the latest version of Centos 7. The $5 dollar droplet with 1GB Memory and 1CPU will work.  
-
-Scrolling down the options you will want to select "add volume" and select NYC1 as the datacenter region.
-
-The default setting for the volume will work but you can reduce the size as long as its not less than 15GB.
-
-Scrolling down you will want to select private networking and user data.  
-Once you select user data you will have the option to insert code. This is where you will add in the cloud config we mentioned above. 
-
-Last, we will want to give add in our ssh keys if you have them, give the machine a hostname and create the cluster. 
-
-Give the machine a couple of minutes to deploy and run the cloud init scripts. Once completed you can ssh to the NFS and make sure that the services are running by executing the following comannds. 
 
 ```
 systemctl status nfs-server

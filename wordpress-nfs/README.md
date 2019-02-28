@@ -4,7 +4,7 @@
 
 WordPress is a stateful application that relies on a filesystem and a MySQL database as backends. Since volumes cannot be attached to more than one worker we must use a service like NFS to share the file system across worker nodes.
 
-In this guide, you will deploy a Kubernetes cluster, NFS server and deploy WordPress in Kubernetes. You will also be able to scale the WordPress application across multiple worker nodes. The WordPress pods will  automatically mount the NFS share and populate the NFS share with WordPress default data. 
+In this guide, you will deploy a Kubernetes cluster, NFS server and deploy WordPress in Kubernetes. You will also be able to scale the WordPress application across multiple worker nodes. The WordPress pods will automatically mount the NFS share and populate the NFS share with WordPress default data. 
 
 ![Diagram](https://raw.githubusercontent.com/DO-Solutions/do-kubernetes/master/wordpress-nfs/img/diagram.png)
 
@@ -45,7 +45,7 @@ If you are not familiar with the cloud config we recomend that you read the foll
 * You will insert the following code under User Data when selected. 
 
 <$>[note]
-**Note:** You must modify the config-config below and enter one of the worker private IP address we noted above. 
+**Note:** You must modify the cloud-config below and enter one of the worker private IP address we noted above. 
 <$>
 
 ```
